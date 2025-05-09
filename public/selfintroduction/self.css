@@ -1,0 +1,111 @@
+body {
+  background-image: url('disney.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+  margin: 0;
+  height: 100vh;
+  color: white;
+  font-family: Arial, sans-serif;
+  position: relative; 
+  z-index: 0;
+}
+ body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  min-height: 100%;
+  z-index: -1;
+  pointer-events: none; 
+} 
+.profile-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 100px;
+  padding: 40px;
+  max-width: 1000px;
+  margin: auto;
+}
+.selfie-photo {
+  width: 150px;               /* 幅を指定 */
+  height: 150px;              /* 高さを指定（幅と高さを同じにする） */
+  border-radius: 50%;         /* 丸くする */
+  background-size: cover;    /* 画像が枠に収まるように調整 */
+  background-position: center; /* 画像の位置を中央に */
+}
+.profile-details h1 {
+  color: white;
+  font-size: 40px;
+  line-height: 1.6;
+  margin-bottom: 10px; /* ← 下の空白を狭める */
+}
+.profile-details ul {
+  color: white;
+  font-size: 20px;
+  line-height: 1.6;
+  list-style: none;
+  padding-left: 0; /*左の余白も消したい*/
+  margin-top: 0; /* ← 上の余白をなくす */
+  margin-bottom: 0px;
+}
+.container {
+  position: relative; /* 子要素の位置を基準に設定 */
+  display: flex; /* 横並びにする */
+  flex-wrap: wrap; /* アイテムが親要素の幅を超えると折り返す */
+  justify-content: space-between; /* ボックス間のスペースを均等に */
+  gap: 20px; /* ボックス間の隙間を20pxに設定 */
+  padding-left: 20px;  /* 左側の余白を20pxに */
+  padding-right: 20px; /* 右側の余白を20pxに */
+  margin-top: 20px; /* 上に20pxの余白を追加 */
+  margin-bottom: 20px; /* 下に20pxの余白を追加 */
+}
+.box {
+  flex: 1 1 30%; /* 各ボックスの基準幅を30%に設定し、必要に応じて伸縮可能に */
+  min-width: 250px; /* 最小幅を250pxに設定 */
+  width: 30%; /* 各ボックスの幅を親要素の30%に設定 */
+  height: 200px;   
+  padding: 20px;
+  //background-color: #f0f0f0;
+  border: 2px solid #ffffff;
+  text-align: center;
+  box-sizing: border-box; /* パディングとボーダーを含めて幅を計算 */
+}
+.favorite-text{
+  font-size: 40px;
+  position: absolute; /* 絶対位置 */
+  top: -50px; 
+  left: 20px; 
+  margin: 0; 
+}
+.links-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 100px;
+  padding: 40px;
+  max-width: 1000px;
+  margin: 0 auto; /* 上下の余白をなくす */
+  padding: 0; /* 内側の余白もなくす */
+}
+.links-details {
+  display: flex; /* 横並びに */
+  align-items: center; /* アイコンと文字を縦方向に中央揃え */
+  gap: 40px; /* アイコンとアイコンの間にスペースを追加 */
+  margin: 0; /* 上下の余白をなくす */
+  padding: 0; /* 内側の余白もなくす */
+}
+.links-details h1 {
+  color: white;
+  font-size: 40px;
+  line-height: 1.6;
+  margin-right: 100px; /* 'LINKS'とアイコンの間にスペースを追加 */
+}
+a {
+  display: inline-block; /* リンクがインラインブロックになるように */
+}
