@@ -1,5 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
 	const userList = document.getElementById("userList");
+	const loading = document.getElementById("loading");
+
+	loading.style.display = "flex";
 
 	fetch("https://jsonplaceholder.typicode.com/users")
 		.then((res) => res.json())
@@ -14,5 +17,8 @@ document.addEventListener("DOMContentLoaded", () => {
 		.catch((error) => {
 			console.error("通信エラー:", error);
 			alert("データの取得に失敗しました");
+		})
+		.finally(() => {
+			loading.style.display = "none";
 		});
 });
