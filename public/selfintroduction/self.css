@@ -93,9 +93,7 @@ body {
   box-sizing: border-box; 
 }
 
-.box h1,
-.box h2,
-.box h3 {
+.box h2 {
   font-size: 30px;
   color: white;
   margin-bottom: 10px;
