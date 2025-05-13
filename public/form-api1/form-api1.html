@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="jp">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Form</title>
+    <link rel="stylesheet" href="form-api1.css"/>
+  </head>
+  <body>
+    <form id="myform" method="POST">
+      <div class="form-group">
+        <label for="username">名前：</label>
+        <input type="text" id="username" name="username"/>
+        <p class="error-message" id="name-error"></p>
+      </div>
+      <div class="form-group">
+        <label for="age">年齢：</label>
+        <input type="number" id="age" name="age" min="18"/>
+        <p class="error-message" id="age-error"></p>
+      </div>
+      <div class="form-group">
+        <label for="job">職業：</label>
+        <select id="job" name="job">
+          <option value="" disabled selected hidden>選択してください</option>
+          <option value="会社員">会社員</option>
+          <option value="契約社員・派遣社員">契約社員・派遣社員</option>
+          <option value="パート・アルバイト">パート・アルバイト</option>
+          <option value="自営業">自営業</option>
+          <option value="専業主婦・主夫">専業主婦・主夫</option>
+          <option value="学生">学生</option>
+          <option value="その他">その他</option>
+        </select>
+        <p class="error-message" id="job-error"></p>
+      </div>
+      <div class="form-group">
+        <label for="selfIntroduction">自己紹介：</label>
+        <textarea id="selfIntroduction" name="selfIntroduction" placeholder="任意の文章"></textarea>
+        <p class="error-message" id="self-error"></p>
+      </div>
+      <button type="submit">送信</button>
+    </form>
+    <script src="form-api1.js"></script>
+  </body>
+</html>
