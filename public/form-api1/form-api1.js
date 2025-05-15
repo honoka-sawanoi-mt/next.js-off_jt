@@ -19,48 +19,52 @@ document.addEventListener("DOMContentLoaded", () => {
 		jobError.textContent = "";
 		selfError.textContent = "";
 
-		let isValid = true;
+		try {
+			let isValid = true;
 
-		// 名前の検証
-		if (inputname.value.trim() === "") {
-			nameError.textContent = "名前を入力してください。";
-			nameError.style.display = "block";
-			isValid = false;
-		}
+			// 名前の検証
+			if (inputname.value.trim() === "") {
+				nameError.textContent = "名前を入力してください。";
+				nameError.style.display = "block";
+				isValid = false;
+			}
 
-		// 年齢の検証
-		const age = Number.parseInt(inputage.value.trim(), 10);
-		if (Number.isNaN(age) || age < 18) {
-			ageError.textContent = "18歳以上の年齢を入力してください。";
-			ageError.style.display = "block";
-			isValid = false;
-		}
+			// 年齢の検証
+			const age = Number.parseInt(inputage.value.trim(), 10);
+			if (Number.isNaN(age) || age < 18) {
+				ageError.textContent = "18歳以上の年齢を入力してください。";
+				ageError.style.display = "block";
+				isValid = false;
+			}
 
-		// 職業の検証
-		if (jobselect.value === "") {
-			jobError.textContent = "職業を選択してください。";
-			jobError.style.display = "block";
-			isValid = false;
-		}
+			// 職業の検証
+			if (jobselect.value === "") {
+				jobError.textContent = "職業を選択してください。";
+				jobError.style.display = "block";
+				isValid = false;
+			}
 
-		// 自己紹介の検証
-		if (selftextarea.value.trim() === "") {
-			selfError.textContent = "自己紹介を入力してください。";
-			selfError.style.display = "block";
-			isValid = false;
-		}
+			// 自己紹介の検証
+			if (selftextarea.value.trim() === "") {
+				selfError.textContent = "自己紹介を入力してください。";
+				selfError.style.display = "block";
+				isValid = false;
+			}
 
-		// フォームが有効な場合、データを JSON 形式で出力
-		if (isValid) {
-			const data = {
-				username: inputname.value,
-				age: inputage.value,
-				job: jobselect.value,
-				selfintroduction: selftextarea.value,
-			};
+			// フォームが有効な場合、データを JSON 形式で出力
+			if (isValid) {
+				const data = {
+					username: inputname.value,
+					age: inputage.value,
+					job: jobselect.value,
+					selfintroduction: selftextarea.value,
+				};
 
-			const jsonOutput = JSON.stringify(data, null, 2);
-			console.log(jsonOutput);
+				const jsonOutput = JSON.stringify(data, null, 2);
+				console.log(jsonOutput);
+			}
+		} catch (error) {
+			console.error("エラー", e.message);
 		}
 	});
 });
