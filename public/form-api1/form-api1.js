@@ -1,70 +1,85 @@
 document.addEventListener("DOMContentLoaded", () => {
-	const form = document.getElementById("myform");
-	const inputname = document.getElementById("username");
-	const inputage = document.getElementById("age");
-	const jobselect = document.getElementById("job");
-	const selftextarea = document.getElementById("selfIntroduction");
-
-	const nameError = document.getElementById("name-error");
-	const ageError = document.getElementById("age-error");
-	const jobError = document.getElementById("job-error");
-	const selfError = document.getElementById("self-error");
+	const form = document.getElementById("form");
 
 	form.addEventListener("submit", (e) => {
 		e.preventDefault(); //ページのリロード防止
 
-		// エラーメッセージの初期化
-		nameError.textContent = "";
-		ageError.textContent = "";
-		jobError.textContent = "";
-		selfError.textContent = "";
+		// エラーメッセージをクリア
+		const errorElements = form.querySelectorAll(".error-message");
+		for (let i = 0; i < errorElements.length; i++) {
+			const el = errorElements[i];
+			el.textContent = "";
+			el.style.display = "none";
+		}
 
 		try {
-			let isValid = true;
+			// それぞれのフォームのバリデーションを通過したら、フォームを送信
+			// それぞれの結果を別々に保持する
+			const results = [
+				{
+					id: "name",
+					isValid: true,
+					message: "名前を入力してください。",
+				},
+				{
+					id: "age",
+					isValid: true,
+					message: "18歳以上の年齢を入力してください。",
+				},
+				{
+					id: "job",
+					isValid: true,
+					message: "職業を選択してください。",
+				},
+				{
+					id: "selfIntroduction",
+					isValid: true,
+					message: "自己紹介を入力してください。",
+				},
+			];
 
-			// 名前の検証
-			if (inputname.value.trim() === "") {
-				nameError.textContent = "名前を入力してください。";
-				nameError.style.display = "block";
-				isValid = false;
+			for (const result of results) {
+				// DOMの値を取得する(変数を使うことで、4つを一緒に定義)
+				const element = document.getElementById(result.id);
+				// フォームの値を取得する
+				const value = element.value;
+				// id毎にバリデーションチェック(年齢のだけ別で考える)
+				if (result.id === "age") {
+					result.isValid =
+						!Number.isNaN(value) && Number.parseInt(value, 10) >= 18;
+				} else {
+					result.isValid = value.trim() !== "";
+				}
 			}
-
-			// 年齢の検証
-			const age = Number.parseInt(inputage.value.trim(), 10);
-			if (Number.isNaN(age) || age < 18) {
-				ageError.textContent = "18歳以上の年齢を入力してください。";
-				ageError.style.display = "block";
-				isValid = false;
+			// 全てのチェックが終わったら、それぞれのisValidをチェックする
+			const allValid = results.every((result) => result.isValid);
+			if (!allValid) {
+				// catchにそれぞれの項目のメッセージとIDを渡す
+				const errorMessage = results
+					.filter((result) => !result.isValid)
+					.map((result) => `${result.id}: ${result.message}`)
+					.join("\n"); //改行して文字列に変換
+				throw new Error(errorMessage);
 			}
-
-			// 職業の検証
-			if (jobselect.value === "") {
-				jobError.textContent = "職業を選択してください。";
-				jobError.style.display = "block";
-				isValid = false;
-			}
-
-			// 自己紹介の検証
-			if (selftextarea.value.trim() === "") {
-				selfError.textContent = "自己紹介を入力してください。";
-				selfError.style.display = "block";
-				isValid = false;
-			}
-
-			// フォームが有効な場合、データを JSON 形式で出力
-			if (isValid) {
-				const data = {
-					username: inputname.value,
-					age: inputage.value,
-					job: jobselect.value,
-					selfintroduction: selftextarea.value,
-				};
-
-				const jsonOutput = JSON.stringify(data, null, 2);
-				console.log(jsonOutput);
-			}
+			// フォームが有効な場合、入力されたデータを JSON 形式で出力
+			const formData = new FormData(form);
+			const formObject = Object.fromEntries(formData.entries());
+			const jsonOutput = JSON.stringify(formObject, null, 2);
+			console.log(jsonOutput);
 		} catch (error) {
-			console.error("エラー", e.message);
+			// エラーメッセージを処理
+			const errorMessage = error.message;
+			const errorArray = errorMessage.split("\n");
+
+			// エラーメッセージを表示
+			for (const item of errorArray) {
+				const [id, message] = item.split(": ");
+				const errorElement = document.getElementById(`${id}-error`);
+				if (errorElement) {
+					errorElement.textContent = message;
+					errorElement.style.display = "block";
+				}
+			}
 		}
 	});
 });

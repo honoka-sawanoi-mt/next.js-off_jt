@@ -7,10 +7,10 @@
     <link rel="stylesheet" href="form-api1.css"/>
   </head>
   <body>
-    <form id="myform" method="POST">
+    <form id="form" action="#">
       <div class="form-group">
         <label for="username">名前：</label>
-        <input type="text" id="username" name="username"/>
+        <input type="text" id="name" name="username"/>
         <p class="error-message" id="name-error"></p>
       </div>
       <div class="form-group">
@@ -35,7 +35,7 @@
       <div class="form-group">
         <label for="selfIntroduction">自己紹介：</label>
         <textarea id="selfIntroduction" name="selfIntroduction" placeholder="任意の文章"></textarea>
-        <p class="error-message" id="self-error"></p>
+        <p class="error-message" id="selfIntroduction-error"></p>
       </div>
       <button type="submit">送信</button>
     </form>
