@@ -1,0 +1,28 @@
+.container {
+  display: flex;            /* 横並びにする */
+  align-items: center;      /* 縦方向で中央揃え */
+  justify-content: center;  /* 横方向で中央揃え */
+  gap: 100px;               /* ボタンとテキストの間にスペース */
+  padding: 0;
+}
+/*class名には.をつけて、tabに直接書きたい時は.はいらない！*/
+button {
+  padding: 5px 20px 20px 20px;      /* ボタンの内側の余白を設定 上・右・下・左 */
+  font-size: 80px;                  /* ボタンの文字サイズを設定 */
+  width: 100px;                     /*幅*/
+  height: 100px;                    /*高さ*/
+  cursor: pointer;                  /* マウスオーバーでポインターを表示 */
+  border: none;                     /* ボタンの枠線をなしに */
+  background-color: #D3D3D3;        /* ボタンの背景色 */
+  color: white;                     /* ボタンの文字色 */
+  border-radius: 5px;               /* ボタンを丸みを持たせる */
+}
+
+#count {
+  font-size: 150px;
+}
+
+.numberoftimes {
+  font-size: 20px; 
+  text-align: center;    
+}
