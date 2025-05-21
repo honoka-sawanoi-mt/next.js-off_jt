@@ -1,0 +1,43 @@
+form{
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-group{
+  display: flex;
+  align-items: center;
+}
+
+label{
+  font-weight: bold;
+}
+
+input,
+select,
+textarea{
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 90%;
+  /*widthとheightにパディングやボーダーが含まれるようになる！marginは含まれない！*/
+  box-sizing: border-box;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.error-message {
+  color: red;
+  font-size: 16px;
+  display: none;
+}
+
+button{
+  font-size: 18px;
+  border-radius: 4px;
+  width: 80px;
+  margin: 0 auto;
+}
