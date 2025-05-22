@@ -9,9 +9,11 @@ export const metadata: Metadata = {
 Reactがレンダリング可能な全てのものを含む*/
 export default function RootLayout({
 	children,
-}: Readonly<{
+	modal,
+}: {
 	children: React.ReactNode;
-}>) {
+	modal: React.ReactNode;
+}) {
 	return (
 		<html lang="ja">
 			<body>
