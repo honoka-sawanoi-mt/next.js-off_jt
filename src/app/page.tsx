@@ -1,9 +1,10 @@
-const name: string = "Yuki";
+import React from "react";
+import { InputForm } from "./InputForm";
 
-export default function Home() {
+export default function Form() {
 	return (
 		<main>
-			<h1>こんにちは、{name}さん</h1>
+			<InputForm />
 		</main>
 	);
 }
