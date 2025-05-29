@@ -1,7 +1,7 @@
 import React from "react";
 import { InputForm } from "./InputForm";
 
-export default function Form() {
+export default function Page() {
   return (
     <main>
       <InputForm />
